@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello react</title>
+    <style>
+        .box {
+            border: 1px solid #aaa;
+            border-radius: 10px;
+            box-shadow: darkgrey 0px 0px 5px 0px inset;
+            font-family:Arial,Verdana,Sans-serif;
+            width: 500px;
+            margin: 100px auto;
+            text-align: center;
+        }
+        ul li{
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<!-- react核心库 -->
+<script type="text/javascript" src="./js/react.development.js"></script>
+<!-- react-dom 支持react操作dom -->
+<script type="text/javascript" src="./js/react-dom.development.js"></script>
+<!-- babel jsx转js -->
+<script type="text/javascript" src="./js/babel.min.js"></script>
+<script type="text/babel"> //一定写babel
+        let data = ['react', 'vue', 'angular']
+        // let list = []
+        // arr.forEach((item, index) => {
+        // list.push(<li key={index}>{item}</li>)
+        // })
+        const vm = (
+        <div  className="box">
+        <h2>前端js框架列表</h2>
+            <ul>
+                {
+                    data.map((item,index)=>{
+                        return <li key={index}>{item}</li>
+                    })
+                }
+            </ul>
+        </div>
+        )
+        ReactDOM.render(vm,document.getElementById('app'));
+        </script>
+
+</html>

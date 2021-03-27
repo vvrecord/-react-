@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello react</title>
+    <style>
+        .box{
+            border: 1px solid #aaa;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+       
+    </div>
+</body>
+<!-- react核心库 -->
+<script type="text/javascript" src="./js/react.development.js"></script>
+<!-- react-dom 支持react操作dom -->
+<script type="text/javascript" src="./js/react-dom.development.js"></script>
+<!-- babel jsx转js -->
+<script type="text/javascript" src="./js/babel.min.js"></script>
+<script type="text/babel">   //一定写babel
+      //创建虚拟dom  jsx
+      //外层花括号：因为React使用的是JSX语法，JSX语法中嵌入任何js变量、表达式、对象都要用花括号{}扩起来，
+      //内层花括号：JSX如果用到行内CSS style样式时，这个行内样式必须是一个js对象，即{width:'233px', marginRight:'10px'}是一个对象所以用花括号扩起来
+      const myId = 'Hala';
+      const myData = 'show me MONEY'
+      const vm = (
+        <h1>
+            <span className='box'>hello,world!</span>
+            <span id={myId} style={{color:'red'}}>{myData.toLowerCase()}</span>
+        </h1>
+      )
+      //渲染虚拟dom到页面
+      ReactDOM.render(vm,document.getElementById('app'));
+</script>
+</html>
