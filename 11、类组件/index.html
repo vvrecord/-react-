@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello react</title>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<!-- react核心库 -->
+<script type="text/javascript" src="./js/react.development.js"></script>
+<!-- react-dom 支持react操作dom -->
+<script type="text/javascript" src="./js/react-dom.development.js"></script>
+<!-- babel jsx转js -->
+<script type="text/javascript" src="./js/babel.min.js"></script>
+<script type="text/babel">   //一定写babel
+      class MyComponent extends React.Component{
+        //   render在哪？MyComponent原型对象上，供实例使用
+        //   render里面的this是谁，MyComponent组件实例对象
+          render(){
+              return (
+                  <div>hello world!</div>
+              )
+          }
+      }
+      ReactDOM.render(<MyComponent/>,document.getElementById('app'));
+    // react解析组件标签找到MyComponent组件
+    // 发现组件使用类定义，随后new出来该类的实例，并通过实例对象调用render方法
+    // 将redner返回的虚拟dom转换成真实dom渲染到页面
+</script>
+</html>
