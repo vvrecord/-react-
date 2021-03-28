@@ -17,14 +17,15 @@
 <script type="text/javascript" src="./js/react-dom.development.js"></script>
 <!-- babel jsx转js -->
 <script type="text/javascript" src="./js/babel.min.js"></script>
+<!-- PropTypes对props进行限制 -->
+<script type="text/javascript" src="./js/prop-types.js"></script>
 <script type="text/babel">   //一定写babel
     const person ={
-        name:'hela',
-        age:18,
-        sex:'男'
+        name:'hela'
     }
       class Person extends React.Component{
           render(){
+              //props只读的不允许改
               let {name,age,sex} =this.props
               return (
                 <div>
@@ -37,8 +38,17 @@
               )
           }
       }
+      //函数的话使用PropTypes.func
+      Person.propTypes = {
+        name:PropTypes.string.isRequired,
+        sex:PropTypes.string,
+        age:PropTypes.number
+      }
+      Person.defaultProps = {
+        sex:'男',
+        age:18
+      }
       //使用对象的扩展运算符  注意：扩展运算符不能直接展开对象，需要有迭代器接口才能进行扩展，这里是因为babel和react的作用
-          //    <Person {...person}/>  相当于<Person name="hela" age={18}  sex="男" />
       ReactDOM.render(<Person {...person}/>,document.getElementById('app'));
 </script>
 </html>

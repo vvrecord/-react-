@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello react</title>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<!-- react核心库 -->
+<script type="text/javascript" src="./js/react.development.js"></script>
+<!-- react-dom 支持react操作dom -->
+<script type="text/javascript" src="./js/react-dom.development.js"></script>
+<!-- babel jsx转js -->
+<script type="text/javascript" src="./js/babel.min.js"></script>
+<!-- PropTypes对props进行限制 -->
+<script type="text/javascript" src="./js/prop-types.js"></script>
+<script type="text/babel">   //一定写babel
+    const person ={
+    name:'hela'
+    }
+    class Person extends React.Component{
+    //函数的话使用PropTypes.func
+    static propTypes = {
+    name:PropTypes.string.isRequired,
+    sex:PropTypes.string,
+    age:PropTypes.number
+    }
+    static defaultProps = {
+    sex:'男',
+    age:18
+    }
+    render(){
+    //props只读的不允许改
+    let {name,age,sex} =this.props
+    return (
+    <div>
+      <ul>
+        <li>姓名：{name}</li>
+        <li>性别：{sex}</li>
+        <li>年龄：{age+1}</li>
+      </ul>
+    </div>
+    )
+    }
+    }
+    //使用对象的扩展运算符 注意：扩展运算符不能直接展开对象，需要有迭代器接口才能进行扩展，这里是因为babel和react的作用
+    ReactDOM.render(
+    <Person {...person} />,document.getElementById('app'));
+</script>
+</html>
